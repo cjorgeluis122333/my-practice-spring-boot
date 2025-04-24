@@ -1,6 +1,6 @@
-package com.microservice.eureca.my_practice_springboot.model.repository;
+package com.microservice.eureca.my_practice_springboot.model.repository.auth;
 
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

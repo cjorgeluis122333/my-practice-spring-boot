@@ -1,7 +1,7 @@
 package com.microservice.eureca.my_practice_springboot.model.service.admin;
 
 
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
 import com.microservice.eureca.my_practice_springboot.model.exception.UserNotFoundException;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.microservice.eureca.my_practice_springboot.controller.utili;
+package com.microservice.eureca.my_practice_springboot.common.utili;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.microservice.eureca.my_practice_springboot.model.entity;
+package com.microservice.eureca.my_practice_springboot.model.entity.auth;
 
 import jakarta.persistence.*;
 

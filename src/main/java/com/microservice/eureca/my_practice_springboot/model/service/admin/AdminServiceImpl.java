@@ -1,8 +1,8 @@
 package com.microservice.eureca.my_practice_springboot.model.service.admin;
 
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
 import com.microservice.eureca.my_practice_springboot.model.exception.UserNotFoundException;
-import com.microservice.eureca.my_practice_springboot.model.repository.UserRepository;
+import com.microservice.eureca.my_practice_springboot.model.repository.auth.UserRepository;
 import com.microservice.eureca.my_practice_springboot.model.service.auth.AuthenticationService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

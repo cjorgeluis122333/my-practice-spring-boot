@@ -1,6 +1,6 @@
 package com.microservice.eureca.my_practice_springboot.controller.rest;
 
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
 import com.microservice.eureca.my_practice_springboot.model.service.auth.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.microservice.eureca.my_practice_springboot.controller.utili.RequestValidation.validation;
+import static com.microservice.eureca.my_practice_springboot.common.utili.RequestValidation.validation;
 
 @RequestMapping("/api")
 @RestController()

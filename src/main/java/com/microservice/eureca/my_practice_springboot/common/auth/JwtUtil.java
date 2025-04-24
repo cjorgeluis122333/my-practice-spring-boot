@@ -1,4 +1,4 @@
-package com.microservice.eureca.my_practice_springboot.controller.utili;
+package com.microservice.eureca.my_practice_springboot.common.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

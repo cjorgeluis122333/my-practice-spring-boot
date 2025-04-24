@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/assets/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/home.css">
+    <script src="../../static/assets/bootstrap.js"></script>
+</head>
+<body>
+
+<div id="errorContainer" class="d-flex justify-content-center align-items-center alert alert-danger"
+     style="height: 64px">
+    <p class="text-danger p-4" id="stateError"></p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <header>
+
+                <div id="sussesContainer" style="height: 48px"></div>
+                <h1 class="text-center">Register</h1>
+            </header>
+
+            <form method="post">
+
+                <label class="m-1" for="iUserName">Username: </label>
+                <input class="form-control m-1" type="text" value="" id="iUserName"
+                       placeholder="Insert your user name">
+
+
+                <label class="m-1" for="iEmail">Email: </label>
+                <input class="form-control m-1" type="email" value="" id="iEmail" placeholder="Insert your email">
+
+
+                <label class="m-1" for="iPassword">Password:</label>
+                <input class="form-control m-1" type="text" value="" id="iPassword"
+                       placeholder="Insert your user name">
+
+                <label class="m-1" for="iPasswordRepeat">Password Repeat:</label>
+                <input class="form-control" type="text" value="" id="iPasswordRepeat"
+                       placeholder="Confirm Password">
+
+            </form>
+
+            <button class="btn btn-primary w-100 mt-4 p-2" id="btn-register">Register</button>
+
+            <div id="stateLoading" class="progress-bar progress-bar-striped progress-bar-animated"
+                 style="width: 40%; height: 48px"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/register.js"></script>
+</body>
+</html>

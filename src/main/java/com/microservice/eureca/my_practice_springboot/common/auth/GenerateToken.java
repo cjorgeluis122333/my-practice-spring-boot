@@ -1,7 +1,8 @@
-package com.microservice.eureca.my_practice_springboot.controller.utili;
+package com.microservice.eureca.my_practice_springboot.common.auth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microservice.eureca.my_practice_springboot.common.utili.LoggerMessage;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.userdetails.UserDetails;

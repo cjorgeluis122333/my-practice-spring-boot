@@ -3,7 +3,7 @@ package com.microservice.eureca.my_practice_springboot.controller.security.filte
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;

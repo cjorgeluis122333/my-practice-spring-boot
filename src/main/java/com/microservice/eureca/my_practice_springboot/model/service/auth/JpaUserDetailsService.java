@@ -1,7 +1,7 @@
 package com.microservice.eureca.my_practice_springboot.model.service.auth;
 
-import com.microservice.eureca.my_practice_springboot.model.entity.UserEntity;
-import com.microservice.eureca.my_practice_springboot.model.repository.UserRepository;
+import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
+import com.microservice.eureca.my_practice_springboot.model.repository.auth.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

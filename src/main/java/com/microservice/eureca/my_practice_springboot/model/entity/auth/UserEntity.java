@@ -1,4 +1,4 @@
-package com.microservice.eureca.my_practice_springboot.model.entity;
+package com.microservice.eureca.my_practice_springboot.model.entity.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,6 +27,8 @@ public class UserEntity {
 
     @Email
     String email;
+
+    String picture;
 
     @Transient
     boolean isAdmin;
@@ -118,6 +120,14 @@ public class UserEntity {
 
     public void setRoleEntities(List<RoleEntity> roleEntities) {
         this.roleEntities = roleEntities;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
