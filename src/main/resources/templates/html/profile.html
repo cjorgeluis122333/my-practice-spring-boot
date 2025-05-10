@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../../static/css/home.css">
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-5 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="d-flex fw-bold mb-0 display-6 text-center">Profile</h1>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+                <form class="">
+                    <!--                    Profile img-->
+                    <div class="card card-cover overflow-hidden text-white bg-dark  rounded-circle shadow-lg mb-4"
+                         style="background-image: url('img/unsplash-photo-2.jpg'); height: 320px">
+                        <div class="d-flex  h-100 p-5 pb-3 text-white text-shadow-1 justify-content-center">
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li id="btnChangeImgProfile" class="btn btn-outline-secondary align-items-center">
+                                    <img src="img/add_photo_alternate_24dp.png" type="file" alt="" class=""
+                                         width="24"
+                                         height="24">
+                                    <small class="">Edit</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button id="btnSaveProfileChanges" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary"
+                            type="submit">Save Changes
+                    </button>
+                    <small class="text-muted">You change your profile img here</small>
+                    <hr class="my-4">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/util/cookies.js"></script>
+
+</body>
+</html>

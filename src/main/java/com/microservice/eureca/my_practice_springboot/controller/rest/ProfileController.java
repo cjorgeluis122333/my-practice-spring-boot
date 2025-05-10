@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -73,10 +75,16 @@ public class ProfileController {
 
     }
 
-    @GetMapping("/picture/{pictureName:.+}")
+    @GetMapping("/picture/dowload/{pictureName:.+}")
     @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
     public ResponseEntity<Resource> downloadPicture(@PathVariable String pictureName) {
-        Path path = Paths.get("profile_img").resolve(pictureName).toAbsolutePath();
+// Si no hay nombre o es muy corto, usar imagen por defecto
+        String fileToLoad = (pictureName == null || pictureName.trim().length() < 5)
+                ? "default_profile_img.png"
+                : pictureName;
+
+        //Path of the img
+        Path path = Paths.get("profile_img").resolve(fileToLoad).toAbsolutePath();
         Resource resource = null;
 
         try {
@@ -98,4 +106,39 @@ public class ProfileController {
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 
+
+    @GetMapping("/picture/view/{pictureName:.+}")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
+    public ResponseEntity<Resource> viewPicture(
+            @PathVariable(name = "pictureName", required = false) String pictureName,
+            Authentication authentication) {
+
+        // Si no hay nombre o es muy corto, usar imagen por defecto
+        String fileToLoad = (pictureName == null || pictureName.trim().length() < 5)
+                ? "default_profile_img.png"
+                : pictureName;
+
+        Path path = Paths.get("profile_img").resolve(fileToLoad).toAbsolutePath();
+        Resource resource;
+
+        try {
+            resource = new UrlResource(path.toUri());
+            if (!resource.exists() || !resource.isReadable()) {
+                throw new RuntimeException("No se puede cargar la imagen: " + fileToLoad);
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Ruta inválida para la imagen: " + fileToLoad, e);
+        }
+
+        // Determinar tipo MIME dinámicamente
+        String contentType = "application/octet-stream";
+        try {
+            contentType = Files.probeContentType(path);
+        } catch (IOException ignored) {
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .body(resource);
+    }
 }

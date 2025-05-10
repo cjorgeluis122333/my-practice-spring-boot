@@ -1,7 +1,6 @@
 package com.microservice.eureca.my_practice_springboot.model.service.user;
 
 import com.microservice.eureca.my_practice_springboot.model.entity.auth.UserEntity;
-import com.microservice.eureca.my_practice_springboot.model.exception.UserNotFoundException;
 import com.microservice.eureca.my_practice_springboot.model.repository.auth.UserRepository;
 import com.microservice.eureca.my_practice_springboot.model.repository.paging.UserPagingRepository;
 import org.springframework.data.domain.Page;

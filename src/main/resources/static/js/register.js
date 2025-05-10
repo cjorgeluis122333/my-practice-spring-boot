@@ -7,31 +7,23 @@ const btnRegister = document.getElementById("btn-register")
 
 const stateError = document.getElementById("stateError")
 const stateLoading = document.getElementById("stateLoading")
+const alert = document.getElementById("errorAlert")
+const btnCloseAlert = document.getElementById("btnCloseAlert")
+
+btnCloseAlert.addEventListener("click", () => {
+    alert.setAttribute("hidden", "hidden")
+})
 
 btnRegister.addEventListener("click", () => {
     onRegister().then(r => {
 
+    }).catch(() => {
+        alert.removeAttribute("hidden")
+        alert.children.item(0).innerHTML = "Invalid credentials"
+
     })
 
 })
-
-//This kind of function execute on start project
-// const onLog = fetch("http://localhost:8081/login", {
-//     method: "POST", headers: {
-//         'Content-Type': 'application/json',
-//     }, body: JSON.stringify({
-//         username: "", password: ""
-//     })
-// }).then(response => {
-//     if (!response.ok) {
-//         throw new Error("Error")
-//     }
-//     return response.json()
-// }).then(date => {
-//     console.log(date)
-// }).catch(error => {
-//     console.error(error)
-// })
 
 
 const onRegister = async () => {
@@ -39,22 +31,26 @@ const onRegister = async () => {
     const password = getPass.value
     const passRepeat = getPassRepeat.value
     const email = getEmail.value
-    if (userName.length < 3 || password.length < 3 || password.length < 3 || passRepeat !== password || email.length < 3) {
-
-        stateHandler("E")
-
-    } else {
-        await makePetition()
+  const isValid = validateForm(userName, password, passRepeat, email)
+    if (isValid === true) {
+        console.log("true")
+        await makePetition(userName, password, email)
+            .then(() => {
+                const encodeUserName = encodeURI(userName)
+                const encodePassword = encodeURI(password)
+                window.location.href = `../../templates/html/login.html?username=${encodeUserName}&password=${encodePassword}`
+            }).catch(error => {
+                alert.removeAttribute("hidden")
+            })
+    }else {
+        console.log("False")
     }
-
 
 }
 
-const makePetition = async () => {
-
+const makePetition = async (userName, password, email) => {
 
     try {
-//                                                   http://localhost:8081/api/register
         const request = await fetch("http://localhost:8081/api/register", {
             method: 'POST', headers: {
                 'Content-Type': 'application/json',
@@ -66,8 +62,7 @@ const makePetition = async () => {
             throw new Error(`Error HTTP: ${request.status}`);
         }
         //Susses
-        const data = await request.json()
-        console.log(data)
+        return await request.json()
 
 
     } catch (error) {
@@ -75,53 +70,23 @@ const makePetition = async () => {
     }
 }
 
-const onFeatchAll = async () => {
 
-    try {
+const validateForm = (userName, password, passRepeat, email) => {
 
-        const request = await fetch("http://localhost:8081/admin/users", {
-            method: 'GET', headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        if (!request.ok) {
-            throw new Error(`Error HTTP: ${request.status}`);
-        }
-        //Susses
-        const data = await request.json()
-        console.log(data)
-
-
-    } catch (error) {
-        console.error('Error en la petición:', error);
+    if (userName.length <= 3) {
+        alert.removeAttribute("hidden")
+        alert.children.item(0).innerHTML = "Invalid credentials, username to short"
+        return false
+    } else if (password.length <= 3 || passRepeat !== password) {
+        alert.removeAttribute("hidden")
+        alert.children.item(0).innerHTML = "Invalid credentials, the password has to by bigger than 3 and equals to password repeat"
+        return false
+    } else if (email.length < 5) {
+        alert.removeAttribute("hidden")
+        alert.children.item(0).innerHTML = "Invalid credential, the email is to shot"
+        return false
     }
+    return true
 
 }
 
-const onLoading = () => {
-    setInterval(stateHandler("L"), 20)
-
-
-}
-
-
-const stateHandler = (actualState) => {
-    if (actualState === "E") {
-        stateError.innerHTML = "Your register info is incomplete"
-    }
-    //else if (actualState === "S") {
-    //     setTimeout(() => {
-    //
-    //     }, 1000)
-    //     stateLoading.setAttribute("style", "width: 40%")
-    //
-    // } else if (actualState === "L") {
-    //     setTimeout(() => {
-    //
-    //
-    //     }, 2000)
-    //     stateLoading.setAttribute("style", "width: 40%")
-    //
-    // }
-
-}

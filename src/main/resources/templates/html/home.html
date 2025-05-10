@@ -3,10 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/home.css">
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
 
     <title>Title</title>
 </head>
 <body>
+<main>
+
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <h1 class="display-6">FullStackPractice</h1>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="users.html" class="nav-link">Users</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link">Products</a></li>
+
+                <!--                                         DropDownMenu-->
+                <li>
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="imgProfile" src="../../static/assets/img/images.jpg" alt="mdo" width="40" height="40"
+                             class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#" id="btnLogOut">Sign out</a></li>
+                    </ul>
+            </ul>
+
+        </header>
+    </div>
+
+
+    <div class="card-img">
+        <img src="" alt="">
+    </div>
+
+</main>
 
 <script src="../../static/js/util/cookies.js"></script>
 <script src="../../static/js/home.js"></script>

@@ -39,9 +39,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         newUser.setRoleEntities(roleTemp);
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        newUser.setPicture("default_profile_img.png");
 
         return userService.save(newUser);
     }
-
 
 }

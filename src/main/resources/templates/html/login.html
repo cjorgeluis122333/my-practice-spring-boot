@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="../../static/assets/bootstrap.css">
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="../../static/css/login.css">
-    <script src="../../static/assets/bootstrap.js"></script>
+
 </head>
 <body>
 
-<div id="state">
-    <strong></strong>
-</div>
+
 <header>
-<h1 class="text-center mt-5">Welcome to My Practice Project</h1>
+
+    <div class="alert alert-danger alert-dismissible fade show" id="errorAlert" role="alert" hidden="hidden">
+        <h6>Invalid credentials</h6>
+        <button type="button" id="btnCloseAlert" class="btn-close" aria-label="Close"></button>
+    </div>
+    <h1 class="text-center mt-5">Welcome to My Practice Project</h1>
 </header>
 
 <div class="container d-block justify-content-center align-items-center">
-    <div class="card  mt-5   card-body">
+    <div class="card card-body mt-5">
         <div id="stateL"></div>
 
         <h2 class="text-center">Login</h2>
 
         <p class="text-center">You need register in this page for have access to the home</p>
 
-        <form method="post">
+        <form class="p-4" method="post">
 
-
-            <div class="input-group mt-2">
-                <label class="m-2" for="iUserName">Username:</label>
-                <input class="form-control  m-2" type="text" value="" id="iUserName"
-                       placeholder="Insert your user name">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="iUserName" placeholder="Insert your user name">
+                <label for="iUserName">Username</label>
             </div>
 
-            <div class="input-group">
-                <label class="m-2" for="iPassword">Password:</label>
-                <input class="form-control m-2" type="text" value="" id="iPassword"
+
+            <div class="form-floating mb-3">
+                <input class="form-control" type="password" value="" id="iPassword"
                        placeholder="Insert your user password">
+                <label for="iPassword">Password:</label>
             </div>
-
 
         </form>
 
@@ -50,7 +53,6 @@
             <a class="btn btn-outline-secondary mt-2 w-75" href="register.html">Register</a>
         </div>
 
-        <p id="error" style="color: #0a53be"></p>
     </div>
 </div>
 

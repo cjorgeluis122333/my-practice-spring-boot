@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../static/assets/bootstrap.css">
-    <link rel="stylesheet" href="../../static/css/home.css">
-    <script src="../../static/assets/bootstrap.js"></script>
-</head>
-<body>
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
 
-<div id="errorContainer" class="d-flex justify-content-center align-items-center alert alert-danger"
-     style="height: 64px">
-    <p class="text-danger p-4" id="stateError"></p>
+    <link rel="stylesheet" href="../../static/css/home.css">
+
+</head>
+
+<body>
+<div class="alert alert-danger alert-dismissible fade show" id="errorAlert" role="alert" hidden="hidden">
+    <h6>Invalid credentials</h6>
+    <button type="button" id="btnCloseAlert" class="btn-close" aria-label="Close"></button>
 </div>
 
-<div class="container">
-    <div class="card">
-        <div class="card-body">
+<div class="container mt-5">
+    <div class="card pb-3">
+        <div class="card-body my-auto">
             <header>
-
-                <div id="sussesContainer" style="height: 48px"></div>
                 <h1 class="text-center">Register</h1>
             </header>
 
@@ -46,12 +46,10 @@
 
             <button class="btn btn-primary w-100 mt-4 p-2" id="btn-register">Register</button>
 
-            <div id="stateLoading" class="progress-bar progress-bar-striped progress-bar-animated"
-                 style="width: 40%; height: 48px"></div>
         </div>
     </div>
 </div>
-
+<script src="../../static/js/util/generate_alert_dialog.js"></script>
 <script src="../../static/js/register.js"></script>
 </body>
 </html>
