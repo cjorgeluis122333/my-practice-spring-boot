@@ -15,6 +15,7 @@ import java.util.Objects;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     long id;
 
     @Column(nullable = false, unique = true)
@@ -24,10 +25,8 @@ public class UserEntity {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotBlank
     String password;
-
     @Email
     String email;
-
     String picture;
 
     @Transient
