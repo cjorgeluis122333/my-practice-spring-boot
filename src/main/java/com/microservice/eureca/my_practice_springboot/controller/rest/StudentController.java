@@ -6,7 +6,6 @@ import com.microservice.eureca.my_practice_springboot.model.service.student.Stud
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,14 +24,12 @@ public class StudentController {
     }
 
 
-    @GetMapping({"/", "/all"})
-    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
+    @GetMapping("/all")
     ResponseEntity<?> findAllStudent() {
         return ResponseEntity.ok(studentService.findAllStudent());
     }
 
     @GetMapping("/")
-    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
     ResponseEntity<?> findStudentByName(@RequestParam String name) {
         Map<String, String> error = new HashMap<>();
         try {
@@ -64,8 +61,10 @@ public class StudentController {
 
 
     @PostMapping("/")
-    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
-    ResponseEntity<?> saveStudent(@RequestBody @Valid StudentEntity student, BindingResult bindingResult) {
+    ResponseEntity<?> saveStudent(
+            @RequestBody @Valid StudentEntity student,
+            BindingResult bindingResult
+    ) {
         if (bindingResult.hasErrors())
             return RequestValidation.validation(bindingResult);
 
@@ -76,26 +75,23 @@ public class StudentController {
 
     }
 
-    @PutMapping("/{id}")
-    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
+    @PutMapping("/")
     ResponseEntity<?> updateStudent(
             @RequestBody @Valid StudentEntity student,
-            BindingResult bindingResult,
-            @PathVariable Long id) {
+            BindingResult bindingResult
+    ) {
         if (bindingResult.hasErrors())
             return RequestValidation.validation(bindingResult);
 
         Map<String, Boolean> res = new HashMap<>();
-        var wasSave = studentService.updateStudent(student, id);
+        var wasSave = studentService.updateStudent(student, 1L);
         res.put("result", wasSave);
         return wasSave ? ResponseEntity.status(HttpStatus.OK).body(res) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
 
     }
 
     @DeleteMapping("/")
-
-    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
-    ResponseEntity<?> deleteStudent(@RequestParam String dniStudent) {
+    ResponseEntity<?> deleteStudent(@RequestParam(name = "dni") String dniStudent) {
         Map<String, Boolean> res = new HashMap<>();
         var wasSave = studentService.deleteStudent(dniStudent);
         res.put("result", wasSave);

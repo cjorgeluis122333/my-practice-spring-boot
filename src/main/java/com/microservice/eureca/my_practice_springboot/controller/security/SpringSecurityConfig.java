@@ -26,7 +26,8 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.List;
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.*;
+
+import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.HEADER_AUTHORIZATION;
 
 @Configuration
 @EnableMethodSecurity(prePostEnabled = true)
@@ -60,6 +61,12 @@ public class SpringSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/register").permitAll()
+                        //Delete soon
+                        .requestMatchers(HttpMethod.GET, "/api/student/all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/student/").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/student/").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/student/").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/student/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))

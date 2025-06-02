@@ -1,43 +1,61 @@
 package com.microservice.eureca.my_practice_springboot.model.entity.student;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "student")
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(length = 30, nullable = false)
+    @NotBlank
     private String first_name;
 
     @Column(length = 30, nullable = false)
+    @NotBlank
     private String last_name;
 
     @Column(length = 11, nullable = false, unique = true)
+    @NotBlank
     private String dni_student;
 
     @Column(name = "carrera", length = 20, nullable = false)
+    @NotBlank
     private String career;
+
+    @NotBlank
+    @Column(name = "adress")
+    private String address;
 
     private int sch_year;
 
     private Boolean scholarship;
 
-    @Column(name = "adress")
-    private String address;
 
     public StudentEntity() {
 
     }
 
-    @PrePersist
-    public void prePersist() {
-        sch_year = 1;
-        scholarship = false;
-    }
+//    @PrePersist
+//    public void prePersist() {
+//        sch_year = 1;
+//        scholarship = false;
+//    }
 
+    public StudentEntity(Long id, String first_name, String last_name, String dni_student, String career, String address, int sch_year, Boolean scholarship) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.dni_student = dni_student;
+        this.career = career;
+        this.address = address;
+        this.sch_year = sch_year;
+        this.scholarship = scholarship;
+    }
 
     public StudentEntity(String first_name, String last_name, String dni_student, String career, String address) {
         this.first_name = first_name;
@@ -49,23 +67,24 @@ public class StudentEntity {
         scholarship = false;
     }
 
-    public StudentEntity(String first_name, String last_name, String dni_student, String career) {
+    public StudentEntity(String first_name, String last_name, String dni_student, String career, String address, int sch_year) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.dni_student = dni_student;
         this.career = career;
-        sch_year = 1;
-        scholarship = false;
+        this.address = address;
+        this.sch_year = sch_year;
+        this.scholarship = false;
     }
 
-    public StudentEntity(String first_name, String last_name, String dni_student, String career, int sch_year, Boolean scholarship, String address) {
+    public StudentEntity(String first_name, String last_name, String dni_student, String career, String address, Boolean scholarship) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.dni_student = dni_student;
         this.career = career;
-        this.sch_year = sch_year;
-        this.scholarship = scholarship;
         this.address = address;
+        this.scholarship = scholarship;
+        this.sch_year = 1;
     }
 
     public Long getId() {
