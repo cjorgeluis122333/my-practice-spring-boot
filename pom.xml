@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.microservice.eureca</groupId>
     <artifactId>my_practice_springboot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>my_practice_springboot</name>
     <description>my_practice_springboot</description>
     <url/>
