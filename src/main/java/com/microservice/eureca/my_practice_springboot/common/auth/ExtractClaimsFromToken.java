@@ -3,13 +3,13 @@ package com.microservice.eureca.my_practice_springboot.common.auth;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.SECRET_KEY;
+import static com.microservice.eureca.my_practice_springboot.controller.security.util.TokenJwtConfig.SECRET_KEY;
 
-public class JwtUtil {
+public class ExtractClaimsFromToken {
 
-    // Definición de la clave secreta usando Jwts.SIG.HS256.key().build()
-//    public static final SecretKey SECRET_KEY = Jwts.SIG.HS256.key().build();
-
+    /* Definición de la clave secreta usando Jwts.SIG.HS256.key().build()
+    public static final SecretKey SECRET_KEY = Jwts.SIG.HS256.key().build();
+*/
     public static Claims extraerClaims(String token) {
         try {
             return Jwts.parser()
