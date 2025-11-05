@@ -43,23 +43,6 @@ public class StudentController {
 
     }
 
-//
-//    @GetMapping("/")
-//    @PreAuthorize(value = "hasAnyAuthority('USER','ADMIN')")
-//    ResponseEntity<?> findStudentByDniStudent(@RequestParam String dinStudent) {
-//        Map<String, String> error = new HashMap<>();
-//        try {
-//            var students = studentService.findStudentByDniStudent(dinStudent);
-//            return ResponseEntity.status(HttpStatus.OK).body(students);
-//        } catch (NoSuchElementException e) {
-//            error.put("message", e.getMessage());
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
-//
-//        }
-//
-//    }
-
-
     @PostMapping("/")
     ResponseEntity<?> saveStudent(
             @RequestBody @Valid StudentEntity student,
