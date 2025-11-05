@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.SECRET_KEY;
+import static com.microservice.eureca.my_practice_springboot.controller.security.util.TokenJwtConfig.SECRET_KEY;
 
 
 @Component

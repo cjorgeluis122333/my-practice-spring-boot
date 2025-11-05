@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.*;
+import static com.microservice.eureca.my_practice_springboot.controller.security.util.TokenJwtConfig.*;
 
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -63,9 +64,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-
-        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) authResult.getPrincipal();
-        String username = user.getUsername();
+        //Take from the header (Authentication) the full object with getPrincipal()
+        User user = (User) authResult.getPrincipal();
+        String username = user.getUsername(); //Extract form the object the username
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
 
         Claims claims = Jwts.claims()
@@ -82,7 +83,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .signWith(SECRET_KEY)
                 .compact();
 
-        response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
+        response.addHeader(HEADER_AUTHORIZATION, BEARER + token);
 
         Map<String, String> body = new HashMap<>();
         body.put("token", token);

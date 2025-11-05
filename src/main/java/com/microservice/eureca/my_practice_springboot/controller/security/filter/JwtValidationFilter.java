@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.*;
+import static com.microservice.eureca.my_practice_springboot.controller.security.util.TokenJwtConfig.*;
 
 public class JwtValidationFilter extends BasicAuthenticationFilter {
 
@@ -38,11 +38,11 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             throws IOException, ServletException {
 
         String header = request.getHeader(HEADER_AUTHORIZATION);
-        if (header == null || !header.startsWith(PREFIX_TOKEN)) {
+        if (header == null || !header.startsWith(BEARER)) {
             chain.doFilter(request, response);
             return;
         }
-        String token = header.replace(PREFIX_TOKEN, "");
+        String token = header.replace(BEARER, "");
 
         // Verificar blacklist
         if (blacklistService.isBlacklisted(token)) {
