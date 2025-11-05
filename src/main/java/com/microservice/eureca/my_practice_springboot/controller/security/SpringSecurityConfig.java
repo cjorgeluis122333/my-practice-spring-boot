@@ -27,7 +27,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.microservice.eureca.my_practice_springboot.controller.security.TokenJwtConfig.HEADER_AUTHORIZATION;
+import static com.microservice.eureca.my_practice_springboot.controller.security.util.TokenJwtConfig.HEADER_AUTHORIZATION;
 
 @Configuration
 @EnableMethodSecurity(prePostEnabled = true)

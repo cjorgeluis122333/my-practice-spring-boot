@@ -18,5 +18,4 @@ public interface StudentRepository extends CrudRepository<StudentEntity, Long> {
     @Query("select s from  StudentEntity  s where s.dni_student = :dni")
     Optional<StudentEntity> findStudentEntitiesByDni_student(@Param("dni") String dni);
 
-
 }

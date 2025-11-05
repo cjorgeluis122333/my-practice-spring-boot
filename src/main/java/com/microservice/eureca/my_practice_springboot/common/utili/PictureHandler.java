@@ -31,7 +31,6 @@ public class PictureHandler {
      * @param fileName: The file name(Optional because you can get from the file)
      * @param file: The picture you want save
      * @param path: The path can be relative or absolute
-     * @throws IOException
      */
     public static void saveFile(MultipartFile file, String fileName, String path) throws IOException {
         Path fileRoute = Paths.get(path).resolve(fileName).toAbsolutePath();
@@ -54,6 +53,7 @@ public class PictureHandler {
 
         File beforeFile = beforeRoute.toFile();
         if (beforeFile.exists() && beforeFile.canRead()) {
+
             return beforeFile.delete();
         }
         return false;
